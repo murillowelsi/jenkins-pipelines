@@ -13,9 +13,7 @@ pipeline {
         }        
         stage('Build, Release, Unit tests') {
             steps {
-                // dir(path: 'ms-notification') {
-                    sh 'mvn clean package'
-                // }
+              sh 'mvn clean package'
             }   
         }
         stage('Archival') {
