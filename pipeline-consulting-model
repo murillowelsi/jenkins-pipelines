@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                slackSend channel: 'jenkins-ci', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})", teamDomain: 'sensedia', tokenCredentialId: 'slack'
+                slackSend channel: 'jenkins-ci', color: '#33AFFF', message: "*STARTED*: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'\n *More info at:* ${env.BUILD_URL}", teamDomain: 'sensedia', tokenCredentialId: 'slack'
                 git credentialsId: 'aws', url: 'https://git-codecommit.sa-east-1.amazonaws.com/v1/repos/ms-notification'
             }
         }        
@@ -41,7 +41,7 @@ pipeline {
 
             slackSend channel: 'jenkins-ci', teamDomain: 'sensedia', tokenCredentialId: 'slack',
                 color: COLOR_MAP[currentBuild.currentResult],
-                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}, by ${env.BUILD_USER_EMAIL}\n More info at: ${env.BUILD_URL}"
+                message: "*${currentBuild.currentResult}:* Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'\n *More info at:* ${env.BUILD_URL}"
             
         }
     }        
