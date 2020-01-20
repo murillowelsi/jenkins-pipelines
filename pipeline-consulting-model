@@ -1,4 +1,4 @@
-def COLOR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABORTED': 'danger']
+def COLOR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABORTED': 'danger', 'STARTED': '#33AFFF']
 
 def getBuildUser() {
     return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
@@ -10,11 +10,14 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+    triggers {
+        pollSCM 'H/2 * * * *'
+    }
     stages {
         stage('Checkout') {
             steps {
                 slackSend channel: 'jenkins-ci', color: '#33AFFF', message: "*STARTED*: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'\n *More info at:* ${env.BUILD_URL}", teamDomain: 'sensedia', tokenCredentialId: 'slack'
-                git credentialsId: 'aws', url: 'https://git-codecommit.sa-east-1.amazonaws.com/v1/repos/ms-notification'
+                git credentialsId: 'aws', url: 'https://git-codecommit.sa-east-1.amazonaws.com/v1/repos/ms-customer'
             }
         }        
         stage('Build + Unit tests') {
@@ -32,7 +35,7 @@ pipeline {
         }
         stage('BDD tests job'){
             steps {
-                build job: 'Ultragaz_bdd-ms-notification-pipeline', wait: true
+                build job: 'Ultragaz_bdd-ms-customer-pipeline', wait: true
             }
         }    
     }
