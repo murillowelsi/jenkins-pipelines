@@ -97,7 +97,7 @@ pipeline {
 
 ## Post
 
-A seções Post define uma ou mais etapas adicionais que são executadas após a conclusão de uma execução de pipeline ou estágio (dependendo do local da seção do post no pipeline). O post pode suportar qualquer um dos seguintes blocos de pós-condição: `always`, `changed`, `fixed`, `regression`, `aborted`, `failure`, `success`, `unstable`, `unsuccessful`, and `cleanup`. Esses blocos de condições permitem a execução de etapas dentro de cada condição, dependendo do status de conclusão do pipeline ou estágio. 
+A seções Post define uma ou mais etapas adicionais que são executadas após a conclusão de uma execução de pipeline ou estágio (dependendo do local da seção do post no pipeline). O post pode suportar qualquer um dos seguintes blocos de pós-condição: `always`, `changed`, `fixed`, `regression`, `aborted`, `failure`, `success`, `unstable`, `unsuccessful`, e `cleanup`. Esses blocos de condições permitem a execução de etapas dentro de cada condição, dependendo do status de conclusão do pipeline ou estágio. 
 
 Utilizaremos o bloco **always**, pois queremos que as etapas sejam executadas, independentemente do status de conclusão da execução do pipeline ou do estágio.
 
