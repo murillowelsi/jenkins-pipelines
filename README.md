@@ -1,6 +1,6 @@
 # Jenkins - Declarative Pipelines
 
-Existem diferentes maneiras de se criar pipelines no Jenkins. Os **pipelines declarativos** fornecem uma sintaxe simplificada e mais amigável, e com instruções específicas.
+Existem diferentes maneiras de se criar pipelines no Jenkins. Os **pipelines declarativos** fornecem uma sintaxe simplificada mais amigável e com instruções específicas.
 
 Os pipelines declarativos devem ser colocados dentro de um bloco de pipeline, por exemplo:
 
